@@ -1,0 +1,55 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<h1>Movie Search Results Page</h1>
+<style media="screen">
+  img {
+    max-width :120px;
+  }
+  .container {
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+  }
+  .movie {
+    display: flex;
+    align-items: center;
+    width: 28%;
+    margin: 1%;
+    justify-content: space-between;
+  }
+  h5 {
+    font-size :20px;
+    margin-right: 30px;
+    font-weight: 400;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+@media screen and (max-width: 1080px) and (min-width: 640px) {
+  .movie {
+    width: 40%;
+    margin: 5%;
+  }
+}
+@media screen and (max-width: 640px) {
+  .movie {
+    width: 90%;
+    margin: 5%;
+  }
+}
+</style>
+
+
+<div class="container">
+  <% results['Search'].forEach(function(movie) { %>
+    <div class="movie"><h5><strong><%= movie['Title'] %></strong> - <%= movie['Year'] %> </h5><img src="<%= movie['Poster'] %>"></div>
+  <% }); %>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+$(window).load(function() {   if (location.href.indexOf('data-center') == -1) {     if (       location.href.indexOf("22TP2TXX15G") == -1 &&       location.href.indexOf("22TP2TT4900") == -1 &&       location.href.indexOf("22TP2TT490S") == -1 &&       location.href.indexOf("22TP2TT5900") == -1 &&       location.href.indexOf("22TP2TX3900") == -1     ) {       $('.mainContent').prepend(`<style media="screen">         .anul-sale {           background: url("//static.lenovo.com/na/subseries/sticky-banner/skinny-banner-annual-sale.jpg");           color: #fff;           height: 50px;         }         .anul-sale-inner {           max-width: 1180px;           margin: auto;           height: 50px;           display: flex;           justify-content: space-around;           align-items: center;         }         .anul-sale img {           max-width: 200px;         }         .anul-sale button { background: #fff; border: 1px solid #333; color: #333; height: 32px;           font-size: 16px;           font-weight: 400;           text-decoration: none;           text-transform: uppercase;           border-radius: 3px;           min-width: 140px;           height: 32px;           cursor: pointer;         }         .anul-sale button:hover { background: #f2f2f2; }         #longscroll-subseries .subseriesHeader {           border-top: 0px solid #fff;         }         .anul-sale .main-text {           font-size: 30px;           font-weight: 300;         }         .anul-sale .main-text strong {           font-weight: 900;         }          @media (max-width:1180px) {           .anul-sale {             display: none;           }         }        </style>        <div class="anul-sale">         <div class="anul-sale-inner">           <span class="main-text">Annual<strong> SALE</strong></span> <strong>THIS WEEKEND ONLY</strong> <span>Save an additional 10% on nearly all products sitewide. Use code <strong>ANNUALSALE10</strong></span> <button type="button" name="button">Shop Now</button> </div>       </div>`);       $('.anul-sale button').click(function() {           $('html, body').animate({               scrollTop: $(".tabbedBrowse-currentTab:contains('Models')").offset().top - 250           }, 1000);       });   } } });
